@@ -1,0 +1,111 @@
+openapi: 3.1.0
+info:
+  title: Nuru Portfolio API
+  version: 0.1.0
+  description: API contracts for Team Portfolio feature (contact submission)
+servers:
+  - url: https://example.com
+paths:
+  /api/contact:
+    post:
+      summary: Submit a contact inquiry
+      operationId: submitContact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactRequest'
+      responses:
+        '200':
+          description: Inquiry accepted and email dispatched
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactSuccess'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '401':
+          description: Anti-spam verification failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: Rate limited
+          headers:
+            Retry-After:
+              schema:
+                type: integer
+              description: Seconds until retry is allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    ContactRequest:
+      type: object
+      required: [name, email, messageBody, consentGiven]
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 80
+        email:
+          type: string
+          format: email
+        messageBody:
+          type: string
+          minLength: 1
+          maxLength: 2000
+        company:
+          type: string
+          maxLength: 120
+        projectType:
+          type: string
+          maxLength: 80
+        consentGiven:
+          type: boolean
+        turnstileToken:
+          type: string
+          description: Turnstile client token for verification (optional in dev)
+    ContactSuccess:
+      type: object
+      properties:
+        ok:
+          type: boolean
+          const: true
+        message:
+          type: string
+          example: Thank you! We'll get back to you soon.
+    ValidationError:
+      type: object
+      properties:
+        ok:
+          type: boolean
+          const: false
+        fieldErrors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    Error:
+      type: object
+      properties:
+        ok:
+          type: boolean
+          const: false
+        error:
+          type: string
