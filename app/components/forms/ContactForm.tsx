@@ -11,8 +11,17 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '../../../components/ui/input';
 import { Checkbox } from '../../../components/ui/checkbox';
 
+type SubmitContactState = Awaited<ReturnType<typeof submitContact>> | null;
+
+const submitContactAction = async (_prevState: SubmitContactState, formData: FormData) => {
+  return submitContact(formData);
+};
+
 export function ContactForm() {
-  const [state, action, isPending] = useActionState(submitContact, null);
+  const [state, action, isPending] = useActionState<SubmitContactState, FormData>(
+    submitContactAction,
+    null
+  );
 
   const form = useForm<InquiryMessageInput>({
     resolver: zodResolver(inquiryMessageSchema),
