@@ -12,14 +12,7 @@ export function ServicesSection() {
           {services.map((service) => (
             <Card key={service.id}>
               <CardHeader>
-                <div className="flex items-center gap-4">
-                  <img
-                    src={`/images/${service.id}-icon.svg`}
-                    alt={`${service.name} icon`}
-                    className="w-12 h-12"
-                  />
-                  <CardTitle>{service.name}</CardTitle>
-                </div>
+                <CardTitle>{service.name}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="mb-4">{service.shortDescription}</p>
