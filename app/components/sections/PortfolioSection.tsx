@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { caseStudies } from '../../lib/data/case-studies';
 import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
 import { Button } from '../../../components/ui/button';
@@ -11,6 +12,23 @@ export function PortfolioSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {caseStudies.map((study) => (
             <Card key={study.id}>
+              {/* preview image */}
+              {study.mediaLinks && study.mediaLinks.length > 0 ? (
+                <div className="w-full h-40 relative overflow-hidden rounded-t-xl bg-white flex items-center justify-center">
+                  <Image
+                    src={study.mediaLinks[0]}
+                    alt={`${study.title} preview`}
+                    width={400}
+                    height={192}
+                    className="object-contain max-w-full max-h-full"
+                  />
+                </div>
+              ) : (
+                <div className="w-full h-48 bg-gray-100 flex items-center justify-center text-sm text-muted-foreground rounded-t-xl">
+                  No preview available
+                </div>
+              )}
+
               <CardHeader>
                 <CardTitle className="text-lg">{study.title}</CardTitle>
                 <p className="text-sm text-muted-foreground">

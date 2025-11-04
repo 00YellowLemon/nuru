@@ -8,24 +8,24 @@ export const caseStudies: CaseStudy[] = [
     problem: 'Customer support was overwhelmed with repetitive inquiries, leading to long response times and customer dissatisfaction.',
     approach: 'Developed a custom AI chatbot using natural language processing to handle common queries, integrated with the existing CRM system.',
     outcome: 'Reduced response time by 80% and improved customer satisfaction scores by 35%.',
-    mediaLinks: ['/images/chatbot-screenshot.svg']
+    mediaLinks: ['/images/university.png']
   },
   {
-    id: 'data-analytics-dashboard',
-    title: 'Data Analytics Dashboard for Retail Chain',
-    anonymizedLabel: 'Large Retail Company',
-    problem: 'The company lacked real-time insights into sales data across multiple locations.',
-    approach: 'Built a comprehensive dashboard using AI-powered analytics to process and visualize sales data from various sources.',
-    outcome: 'Enabled data-driven decision making, resulting in 15% increase in sales and 20% reduction in inventory costs.',
-    mediaLinks: ['/images/analytics-dashboard.svg']
-  },
-  {
-    id: 'automated-workflow-system',
-    title: 'Automated Workflow System for Manufacturing',
-    clientName: 'IndusTech',
-    problem: 'Manual processes were causing delays and errors in the production line.',
-    approach: 'Implemented an AI-driven workflow automation system that optimized production schedules and predicted maintenance needs.',
-    outcome: 'Increased production efficiency by 25% and reduced downtime by 30%.',
-    mediaLinks: ['/images/workflow-automation.svg']
-  }
+    id: 'ai-mental-health-app',
+    title: 'AI-Powered Mental Health Assistant App',
+    clientName: 'Soita',
+    problem: 'Users lacked an accessible, on-demand tool to manage anxiety and break free from cycles of worry, leading to persistent stress.',
+    approach: 'Developed "Soita," an AI-powered chat companion. The app guides users through proven CBT techniques like the Worry Tree Method and APPLE Technique to categorize and manage worries effectively.',
+    outcome: 'Provided users with immediate, guided support for anxiety, helping them find peace of mind and build healthier mental habits.',
+    mediaLinks: ['/images/mental.png']
+  },
+ {
+  id: 'ai-chat-collaboration-platform',
+  title: 'AI-Enhanced Real-Time Chat Platform',
+  clientName: 'Internal Project', // or you can use anonymizedLabel instead
+  problem: 'Traditional messaging platforms lack intelligent assistance, making professional communication less efficient and requiring users to switch between multiple tools for conversation guidance.',
+  approach: 'Built a seamless real-time messaging platform with integrated AI-powered conversation assistance (AI Coach), real-time presence indicators, and instant connectivity features using modern web technologies.',
+  outcome: 'Created a comprehensive communication solution that combines instant messaging with AI assistance, enabling users to have more productive conversations with intelligent suggestions and real-time collaboration features.',
+  mediaLinks: ['/images/chat.png'], // Update with actual screenshot
+}
 ];
