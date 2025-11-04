@@ -3,32 +3,22 @@ import { ProcessStep } from '../types';
 export const processSteps: ProcessStep[] = [
   {
     stepNumber: 1,
-    title: 'Discovery & Planning',
-    summaryOutcome: 'Clear project requirements and technical roadmap established'
+    title: 'Audit & Opportunity Identification',
+    summaryOutcome: 'We review existing workflows, data flows and tool-stack to spot high-impact AI/automation opportunities.'
   },
   {
     stepNumber: 2,
-    title: 'Design & Prototyping',
-    summaryOutcome: 'User experience validated through interactive prototypes'
+    title: 'Roadmap & Prototype',
+    summaryOutcome: 'We map out a phased solution with clear milestones and build a prototype to validate the approach.'
   },
   {
     stepNumber: 3,
-    title: 'Development & Integration',
-    summaryOutcome: 'Robust, scalable solution built with modern technologies'
+    title: 'Build & Integrate',
+    summaryOutcome: 'We develop the full solution — web apps, AI agents, integrations — and embed seamlessly into your operations.'
   },
   {
     stepNumber: 4,
-    title: 'Testing & Quality Assurance',
-    summaryOutcome: 'Comprehensive testing ensures reliability and performance'
-  },
-  {
-    stepNumber: 5,
-    title: 'Deployment & Launch',
-    summaryOutcome: 'Smooth rollout with monitoring and support systems in place'
-  },
-  {
-    stepNumber: 6,
-    title: 'Maintenance & Optimization',
-    summaryOutcome: 'Ongoing improvements and updates to maximize value'
+    title: 'Launch & Scale',
+    summaryOutcome: 'We deploy, monitor performance, optimise and expand the automation to deliver maximum value.'
   }
 ];
