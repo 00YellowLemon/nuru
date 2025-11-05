@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nuru Portfolio",
+  title: "Nuru Works - AI Portfolio",
   description: "AI-powered solutions and services",
 };
 
@@ -29,30 +29,49 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <nav className="flex justify-between items-center p-4 border-b">
-          <Link href="/" className="flex items-center" aria-label="Nuru home">
+        <nav className="flex justify-between items-center p-4 border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+          <Link href="/" className="flex items-end group" aria-label="Nuru Works home">
             <Image
               src="/images/Nuru.PNG"
-              alt="N logo"
-              width={40}
-              height={40}
-              className="mr-3 rounded-sm"
+              alt="Nuru logo"
+              width={36}
+              height={36}
+              className="rounded-sm transition-transform group-hover:scale-105"
             />
-            <span
-              className="text-3xl font-extrabold bg-clip-text text-transparent tracking-tight"
-              style={{
-                backgroundImage:
-                  'linear-gradient(90deg, var(--md-sys-color-primary), var(--md-sys-color-primary-container))',
-              }}
-            >
-              uru
-            </span>
+            <div className="flex items-baseline gap-1">
+              <span className="text-3xl font-bold text-primary tracking-tight">
+                uru
+              </span>
+              <span className="text-3xl font-semibold text-muted-foreground tracking-tight">
+                works
+              </span>
+            </div>
           </Link>
-          <div className="flex space-x-4">
-            <Link href="/services">Services</Link>
-            <Link href="/portfolio">Portfolio</Link>
-            <Link href="/process">Process</Link>
-            <Link href="/contact">Contact</Link>
+          <div className="flex space-x-6 items-center">
+            <Link 
+              href="/services"
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+            >
+              Services
+            </Link>
+            <Link 
+              href="/portfolio"
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+            >
+              Portfolio
+            </Link>
+            <Link 
+              href="/process"
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+            >
+              Process
+            </Link>
+            <Link 
+              href="/contact"
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+            >
+              Contact
+            </Link>
           </div>
         </nav>
         {children}

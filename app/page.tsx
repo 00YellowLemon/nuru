@@ -9,15 +9,6 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-24 bg-surface">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <img
-            src="/images/hero-ai-tech.svg"
-            alt="AI background pattern"
-            className="w-full h-full object-cover"
-          />
-        </div>
-
         {/* Content */}
         <div className="container mx-auto px-4 relative z-10 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-primary mb-6">
