@@ -8,23 +8,23 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 bg-surface">
+      <section className="relative py-16 md:py-24 bg-surface">
         {/* Content */}
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-primary mb-6">
+        <div className="container mx-auto px-4 md:px-6 relative z-10 text-left md:text-center">
+          <h1 className="text-5xl md:text-4xl lg:text-5xl font-bold md:font-extrabold tracking-tight text-primary mb-8 md:mb-6">
             AI Assistants that <span className="text-foreground">Automate</span> and <span className="text-foreground">Amplify</span> Your Business
           </h1>
 
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg md:text-base lg:text-lg text-muted-foreground max-w-2xl md:mx-auto mb-12 md:mb-10 leading-relaxed">
             We design and build custom AI assistants that streamline workflows,
             eliminate repetitive tasks, and unlock measurable growth — empowering your business to work smarter.
           </p>
 
-          <div className="flex justify-center gap-4">
-            <Button asChild size="lg" className="rounded-lg">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button asChild size="lg" className="rounded-lg w-full sm:w-auto">
               <Link href="/contact">Start a Project</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="rounded-lg">
+            <Button asChild variant="outline" size="lg" className="rounded-lg w-full sm:w-auto">
               <Link href="#portfolio">See Our Work</Link>
             </Button>
           </div>
