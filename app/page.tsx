@@ -11,7 +11,7 @@ export default function Home() {
       <section className="relative py-16 md:py-24 bg-surface">
         {/* Content */}
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-left md:text-center">
-          <h1 className="text-5xl md:text-4xl lg:text-5xl font-bold md:font-extrabold tracking-tight text-primary mb-8 md:mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold md:font-extrabold tracking-tight text-primary mb-6 md:mb-6">
             AI Assistants that <span className="text-foreground">Automate</span> and <span className="text-foreground">Amplify</span> Your Business
           </h1>
 
