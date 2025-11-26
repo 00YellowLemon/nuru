@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { useAiChat } from "@/hooks/useAiChat";
 
 type Message = {
     id: string;
@@ -15,39 +16,18 @@ type Message = {
 
 export function AiAssistant() {
     const [isOpen, setIsOpen] = useState(false);
-    const [messages, setMessages] = useState<Message[]>([
-        {
-            id: "1",
-            role: "ai",
-            content: "Hi! I'm your AI assistant. How can I help you today?",
-        },
-    ]);
     const [inputValue, setInputValue] = useState("");
+    const { messages, isLoading, sendMessage } = useAiChat();
 
     const toggleOpen = () => setIsOpen(!isOpen);
 
-    const handleSendMessage = (e?: React.FormEvent) => {
+    const handleSendMessage = async (e?: React.FormEvent) => {
         e?.preventDefault();
-        if (!inputValue.trim()) return;
+        if (!inputValue.trim() || isLoading) return;
 
-        const newMessage: Message = {
-            id: Date.now().toString(),
-            role: "user",
-            content: inputValue,
-        };
-
-        setMessages((prev) => [...prev, newMessage]);
-        setInputValue("");
-
-        // Simulate AI response
-        setTimeout(() => {
-            const aiResponse: Message = {
-                id: (Date.now() + 1).toString(),
-                role: "ai",
-                content: "I'm just a demo UI for now, but I'm listening!",
-            };
-            setMessages((prev) => [...prev, aiResponse]);
-        }, 1000);
+        const messageToSend = inputValue;
+        setInputValue(""); // Clear input immediately
+        await sendMessage(messageToSend);
     };
 
     return (
@@ -97,6 +77,11 @@ export function AiAssistant() {
                                 {message.content}
                             </div>
                         ))}
+                        {isLoading && (
+                            <div className="flex w-max max-w-[80%] flex-col gap-2 rounded-lg px-3 py-2 text-sm bg-muted text-foreground">
+                                <span className="animate-pulse">Thinking...</span>
+                            </div>
+                        )}
                     </CardContent>
                     <CardFooter className="p-4 border-t">
                         <form onSubmit={handleSendMessage} className="flex w-full items-center space-x-2">
@@ -106,8 +91,9 @@ export function AiAssistant() {
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
                                 className="flex-1"
+                                disabled={isLoading}
                             />
-                            <Button type="submit" size="icon" disabled={!inputValue.trim()}>
+                            <Button type="submit" size="icon" disabled={!inputValue.trim() || isLoading}>
                                 <Send className="h-4 w-4" />
                                 <span className="sr-only">Send</span>
                             </Button>
