@@ -3,7 +3,7 @@
 import { useActionState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { inquiryMessageSchema, type InquiryMessageInput } from '../../lib/validation';
+import { inquiryMessageSchema, type InquiryMessageInput, type InquiryMessageInputIn } from '../../lib/validation';
 import { submitContact } from '../../contact/action';
 import { Button } from '../../../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
@@ -23,7 +23,7 @@ export function ContactForm() {
     null
   );
 
-  const form = useForm<InquiryMessageInput>({
+  const form = useForm<InquiryMessageInputIn>({
     resolver: zodResolver(inquiryMessageSchema),
     defaultValues: {
       name: '',
@@ -35,7 +35,7 @@ export function ContactForm() {
     },
   });
 
-  const onSubmit = async (data: InquiryMessageInput) => {
+  const onSubmit = async (data: InquiryMessageInputIn) => {
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
       if (value !== undefined) {
@@ -129,7 +129,7 @@ export function ContactForm() {
                 <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                   <FormControl>
                     <Checkbox
-                      checked={field.value}
+                      checked={field.value === true || field.value === 'true' || field.value === 'on'}
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
