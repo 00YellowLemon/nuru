@@ -6,7 +6,7 @@ export const inquiryMessageSchema = z.object({
   messageBody: z.string().min(1).max(2000),
   company: z.string().max(120).optional(),
   projectType: z.string().max(80).optional(),
-  consentGiven: z.boolean().refine((val) => val === true, {
+  consentGiven: z.union([z.boolean(), z.literal('on'), z.literal('true')]).transform(v => v === true || v === 'on' || v === 'true').refine((val) => val === true, {
     message: 'Consent is required',
   }),
   turnstileToken: z.string().optional(),
