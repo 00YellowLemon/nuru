@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "./ThemeToggle";
 import {
   Sheet,
   SheetContent,
@@ -23,7 +24,7 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+    <nav className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center h-16">
         <Link href="/" className="flex items-end group" aria-label="Nuru Works home">
           <Image
@@ -54,10 +55,12 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
+          <ThemeToggle />
         </div>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button

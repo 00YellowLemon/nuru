@@ -1,36 +1,38 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { contactAction } from '@/app/contact/action';
+import { submitContact } from '@/app/contact/action';
 
 // Mock dependencies
-vi.mock('@/lib/env', () => ({
-  env: {
-    RATE_LIMIT_MAX_PER_MIN: 5,
-  },
-}));
-
-vi.mock('@/lib/rate-limit', () => ({
+vi.mock('@/app/lib/rate-limit', () => ({
   checkRateLimit: vi.fn(),
 }));
 
-vi.mock('@/lib/turnstile', () => ({
+vi.mock('@/app/lib/turnstile', () => ({
   verifyTurnstileToken: vi.fn(),
 }));
 
-vi.mock('@/lib/email', () => ({
+vi.mock('@/app/lib/email', () => ({
   sendInquiryEmail: vi.fn(),
 }));
 
-const mockCheckRateLimit = vi.mocked(require('@/lib/rate-limit').checkRateLimit);
-const mockVerifyTurnstile = vi.mocked(require('@/lib/turnstile').verifyTurnstileToken);
-const mockSendEmail = vi.mocked(require('@/lib/email').sendInquiryEmail);
+vi.mock('next/headers', () => ({
+  headers: vi.fn().mockResolvedValue(new Map([['x-forwarded-for', '127.0.0.1']]))
+}));
 
-describe('contactAction', () => {
+import { checkRateLimit } from '@/app/lib/rate-limit';
+import { verifyTurnstileToken } from '@/app/lib/turnstile';
+import { sendInquiryEmail } from '@/app/lib/email';
+
+const mockCheckRateLimit = vi.mocked(checkRateLimit);
+const mockVerifyTurnstile = vi.mocked(verifyTurnstileToken);
+const mockSendEmail = vi.mocked(sendInquiryEmail);
+
+describe('submitContact', () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
   it('returns success for valid input', async () => {
-    mockCheckRateLimit.mockReturnValue({ allowed: true });
+    mockCheckRateLimit.mockReturnValue({ allowed: true, resetTime: 0 });
     mockVerifyTurnstile.mockResolvedValue(true);
     mockSendEmail.mockResolvedValue(undefined);
 
@@ -38,46 +40,50 @@ describe('contactAction', () => {
     formData.append('name', 'John Doe');
     formData.append('email', 'john@example.com');
     formData.append('messageBody', 'Hello');
-    formData.append('consentGiven', 'true');
+    formData.append('consentGiven', 'on');
+    formData.append('turnstileToken', 'valid-token');
 
-    const result = await contactAction(null, formData);
+    const result = await submitContact(formData);
 
-    expect(result).toEqual({ success: true });
+    expect(result).toEqual({ ok: true, message: "Thank you! We'll get back to you soon." });
     expect(mockSendEmail).toHaveBeenCalled();
   });
 
   it('returns rate limit error', async () => {
-    mockCheckRateLimit.mockReturnValue({ allowed: false, resetTime: Date.now() + 60000 });
+    const resetTime = Date.now() + 60000;
+    mockCheckRateLimit.mockReturnValue({ allowed: false, resetTime });
 
     const formData = new FormData();
     formData.append('name', 'John Doe');
     formData.append('email', 'john@example.com');
     formData.append('messageBody', 'Hello');
-    formData.append('consentGiven', 'true');
+    formData.append('consentGiven', 'on');
 
-    const result = await contactAction(null, formData);
+    const result = await submitContact(formData);
 
     expect(result).toEqual({
-      error: 'Rate limited. Try again later.',
-      resetTime: expect.any(Number),
+      ok: false,
+      error: 'Too many requests. Please try again later.',
+      retryAfter: resetTime,
     });
   });
 
   it('returns validation error for invalid email', async () => {
-    mockCheckRateLimit.mockReturnValue({ allowed: true });
+    mockCheckRateLimit.mockReturnValue({ allowed: true, resetTime: 0 });
     mockVerifyTurnstile.mockResolvedValue(true);
 
     const formData = new FormData();
     formData.append('name', 'John Doe');
     formData.append('email', 'invalid-email');
     formData.append('messageBody', 'Hello');
-    formData.append('consentGiven', 'true');
+    formData.append('consentGiven', 'on');
+    formData.append('turnstileToken', 'valid-token');
 
-    const result = await contactAction(null, formData);
+    const result = await submitContact(formData);
 
     expect(result).toEqual({
-      error: 'Validation failed',
-      fieldErrors: { email: ['Invalid email'] },
+      ok: false,
+      fieldErrors: { email: ['Invalid email address'] },
     });
   });
 });

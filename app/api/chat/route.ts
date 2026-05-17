@@ -33,7 +33,7 @@ export async function POST(req: Request) {
 
         return NextResponse.json(data);
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("Route Handler Error:", error.message);
         return NextResponse.json(
             { response: "I encountered an internal error. Please try again." },
