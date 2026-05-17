@@ -13,3 +13,4 @@ export const inquiryMessageSchema = z.object({
 });
 
 export type InquiryMessageInput = z.infer<typeof inquiryMessageSchema>;
+export type InquiryMessageInputIn = z.input<typeof inquiryMessageSchema>;
