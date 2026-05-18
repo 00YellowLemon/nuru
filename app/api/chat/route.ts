@@ -34,7 +34,7 @@ export async function POST(req: Request) {
         return NextResponse.json(data);
 
     } catch (error: unknown) {
-        console.error("Route Handler Error:", error.message);
+        console.error("Route Handler Error:", error instanceof Error ? error.message : String(error));
         return NextResponse.json(
             { response: "I encountered an internal error. Please try again." },
             { status: 200 } // Return 200 so the UI displays the message instead of crashing
