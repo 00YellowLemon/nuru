@@ -116,7 +116,7 @@ export function useAiChat(): UseAiChatReturn {
                 const contentArray = data.response || data.output;
                 if (Array.isArray(contentArray)) {
                     // Handle array response (e.g. from LangChain/FastAPI)
-                    aiContent = contentArray.map((item: any) => item.text || item.content || JSON.stringify(item)).join('\n');
+                    aiContent = contentArray.map((item: { text?: string; content?: string }) => item.text || item.content || JSON.stringify(item)).join('\n');
                 } else {
                     // Common patterns
                     aiContent = data.response || data.message || data.output || data.content || JSON.stringify(data);

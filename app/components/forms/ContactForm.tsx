@@ -24,15 +24,15 @@ export function ContactForm() {
     null
   );
 
-  const form = useForm<z.infer<typeof inquiryMessageSchema>>({
-    resolver: zodResolver(inquiryMessageSchema) as any,
+  const form = useForm<z.input<typeof inquiryMessageSchema>, any, z.infer<typeof inquiryMessageSchema>>({
+    resolver: zodResolver(inquiryMessageSchema),
     defaultValues: {
       name: '',
       email: '',
       messageBody: '',
       company: '',
       projectType: '',
-      consentGiven: false as any,
+      consentGiven: false,
     },
   });
 
@@ -130,7 +130,7 @@ export function ContactForm() {
                 <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                   <FormControl>
                     <Checkbox
-                      checked={field.value}
+                      checked={field.value === true || field.value === 'on' || field.value === 'true'}
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
