@@ -18,7 +18,6 @@ export function Navbar() {
 
   const navigation = [
     { href: "/services", label: "Services" },
-    { href: "/portfolio", label: "Portfolio" },
     { href: "/process", label: "Process" },
     { href: "/contact", label: "Contact" },
   ];
