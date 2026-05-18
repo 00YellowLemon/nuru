@@ -24,7 +24,7 @@ export function ContactForm() {
     null
   );
 
-  const form = useForm<z.input<typeof inquiryMessageSchema>, any, z.infer<typeof inquiryMessageSchema>>({
+  const form = useForm<z.input<typeof inquiryMessageSchema>, unknown, z.infer<typeof inquiryMessageSchema>>({
     resolver: zodResolver(inquiryMessageSchema),
     defaultValues: {
       name: '',

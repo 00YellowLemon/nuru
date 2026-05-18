@@ -8,12 +8,6 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useAiChat } from "@/hooks/useAiChat";
 
-type Message = {
-    id: string;
-    role: "user" | "ai";
-    content: string;
-};
-
 export function AiAssistant() {
     const [isOpen, setIsOpen] = useState(false);
     const [inputValue, setInputValue] = useState("");
