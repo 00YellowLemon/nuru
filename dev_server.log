@@ -1,0 +1,58 @@
+
+> nuru@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 578ms
+
+○ Compiling / ...
+ GET / 200 in 6.8s (next.js: 5.9s, application-code: 864ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RootLayout>
+      <html lang="en" suppressHydrationWarning={true}>
+        ...
+          <J attribute="class" defaultTheme="system" enableSystem={true}>
+            <V attribute="class" defaultTheme="system" enableSystem={true}>
+              <script>
+              <Navbar>
+              <OuterLayoutRouter>
+              <AiAssistant>
+                <Button>
+                <div className="fixed bott...">
+                  <Card className="w-[350px] ...">
+                    <div data-slot="card" className="bg-card te...">
+                      <CardHeader>
+                      <CardContent>
+                      <CardFooter className="p-4 border-t">
+                        <div data-slot="card-footer" className="flex items...">
+                          <form onSubmit={function handleSendMessage} className="flex w-ful...">
+                            <Input type="text" placeholder="Type your ..." value="" onChange={function onChange} ...>
+                              <input
+                                type="text"
+                                data-slot="input"
+                                className="file:text-foreground placeholder:text-muted-foreground selection:bg-primary..."
+                                placeholder="Type your message..."
+                                value=""
+                                onChange={function onChange}
+                                disabled={false}
+-                               style={{caret-color:"transparent"}}
+                              >
+                            ...
+
+[browser] Image with src "/images/Nuru.PNG" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+ GET /services 200 in 1130ms (next.js: 987ms, application-code: 144ms)
+[browser] Image with src "/images/Nuru.PNG" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.

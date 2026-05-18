@@ -1,5 +1,4 @@
 import { ServicesSection } from './components/sections/ServicesSection';
-import { PortfolioSection } from './components/sections/PortfolioSection';
 import { ProcessSection } from './components/sections/ProcessSection';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -24,16 +23,12 @@ export default function Home() {
             <Button asChild size="lg" className="rounded-lg w-full sm:w-auto">
               <Link href="/contact">Start a Project</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="rounded-lg w-full sm:w-auto">
-              <Link href="#portfolio">See Our Work</Link>
-            </Button>
           </div>
         </div>
       </section>
 
       {/* Sections */}
       <ServicesSection />
-      <PortfolioSection />
       <ProcessSection />
     </div>
   );

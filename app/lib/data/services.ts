@@ -26,15 +26,15 @@ export const services: Service[] = [
     callToAction: { label: 'Get Started', href: '/services/sourcing-agents' }
   },
   {
-    id: 'workflow-automation',
-    name: 'SME Workflow Automation',
-    shortDescription: 'Tailor-made AI integrations to connect your existing tools and automate repetitive daily operations.',
+    id: 'order-management',
+    name: 'Order Management',
+    shortDescription: 'Intelligent systems to automate order processing, tracking, and fulfillment seamlessly.',
     keyBenefits: [
-      'Connect accounting, CRM, and communication tools',
-      'Eliminate manual data entry',
-      'Reduce operational errors',
-      'Free up your team to focus on growth'
+      'Automated order tracking and updates',
+      'Seamless integration with your e-commerce platforms',
+      'Reduce manual processing errors',
+      'Faster fulfillment and delivery insights'
     ],
-    callToAction: { label: 'Discover More', href: '/services/workflow-automation' }
+    callToAction: { label: 'Discover More', href: '/services/order-management' }
   }
 ];
