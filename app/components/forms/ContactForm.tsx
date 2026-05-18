@@ -3,7 +3,8 @@
 import { useActionState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { inquiryMessageSchema, type InquiryMessageInput } from '../../lib/validation';
+import { z } from 'zod';
+import { inquiryMessageSchema } from '../../lib/validation';
 import { submitContact } from '../../contact/action';
 import { Button } from '../../../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
@@ -23,19 +24,19 @@ export function ContactForm() {
     null
   );
 
-  const form = useForm<InquiryMessageInput>({
-    resolver: zodResolver(inquiryMessageSchema),
+  const form = useForm<z.infer<typeof inquiryMessageSchema>>({
+    resolver: zodResolver(inquiryMessageSchema) as any,
     defaultValues: {
       name: '',
       email: '',
       messageBody: '',
       company: '',
       projectType: '',
-      consentGiven: false,
+      consentGiven: false as any,
     },
   });
 
-  const onSubmit = async (data: InquiryMessageInput) => {
+  const onSubmit = async (data: z.infer<typeof inquiryMessageSchema>) => {
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
       if (value !== undefined) {
