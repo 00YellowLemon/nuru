@@ -1,6 +1,6 @@
 'use server';
 
-import { inquiryMessageSchema, type InquiryMessageInput } from '../lib/validation';
+import { inquiryMessageSchema } from '../lib/validation';
 import { checkRateLimit } from '../lib/rate-limit';
 import { verifyTurnstileToken } from '../lib/turnstile';
 import { sendInquiryEmail } from '../lib/email';

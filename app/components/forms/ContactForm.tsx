@@ -3,8 +3,7 @@
 import { useActionState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { inquiryMessageSchema } from '../../lib/validation';
+import { inquiryMessageSchema, InquiryMessageInput } from '../../lib/validation';
 import { submitContact } from '../../contact/action';
 import { Button } from '../../../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
@@ -24,7 +23,7 @@ export function ContactForm() {
     null
   );
 
-  const form = useForm<z.input<typeof inquiryMessageSchema>, any, z.infer<typeof inquiryMessageSchema>>({
+  const form = useForm<InquiryMessageInput>({
     resolver: zodResolver(inquiryMessageSchema),
     defaultValues: {
       name: '',
@@ -36,7 +35,7 @@ export function ContactForm() {
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof inquiryMessageSchema>) => {
+  const onSubmit = async (data: InquiryMessageInput) => {
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
       if (value !== undefined) {

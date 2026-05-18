@@ -1,15 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { ContactForm } from '@/app/components/forms/ContactForm';
 
 // Mock the action
 vi.mock('@/app/contact/action', () => ({
   submitContact: vi.fn(),
 }));
-
-import { submitContact } from '@/app/contact/action';
-const mockAction = vi.mocked(submitContact);
 
 describe('ContactForm', () => {
   it('renders all form fields', () => {
