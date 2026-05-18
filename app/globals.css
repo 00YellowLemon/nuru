@@ -2,69 +2,69 @@
 @import "tw-animate-css";
 
 :root {
-  /* Material 3 Design Tokens - Light Theme (Warm/Optimistic: Orange base) */
-  --md-sys-color-primary: #f97316; /* Orange-500 */
-  --md-sys-color-on-primary: #ffffff;
-  --md-sys-color-primary-container: #ffedd5; /* Orange-100 */
-  --md-sys-color-on-primary-container: #7c2d12; /* Orange-900 */
+  /* Material 3 Design Tokens - Light Theme (Sophisticated Anthropic style) */
+  --md-sys-color-primary: #1A1918;
+  --md-sys-color-on-primary: #FFFFFF;
+  --md-sys-color-primary-container: #E5E0DA;
+  --md-sys-color-on-primary-container: #1A1918;
 
-  --md-sys-color-secondary: #f59e0b; /* Amber-500 */
-  --md-sys-color-on-secondary: #ffffff;
-  --md-sys-color-secondary-container: #fef3c7; /* Amber-100 */
-  --md-sys-color-on-secondary-container: #78350f; /* Amber-900 */
+  --md-sys-color-secondary: #E5DED5;
+  --md-sys-color-on-secondary: #1A1918;
+  --md-sys-color-secondary-container: #F4EFEA;
+  --md-sys-color-on-secondary-container: #333333;
 
-  --md-sys-color-tertiary: #ef4444; /* Red-500 */
-  --md-sys-color-on-tertiary: #ffffff;
-  --md-sys-color-tertiary-container: #fee2e2; /* Red-100 */
-  --md-sys-color-on-tertiary-container: #7f1d1d; /* Red-900 */
+  --md-sys-color-tertiary: #A69B8D;
+  --md-sys-color-on-tertiary: #FFFFFF;
+  --md-sys-color-tertiary-container: #E8E3DF;
+  --md-sys-color-on-tertiary-container: #222222;
 
-  --md-sys-color-error: #ba1a1a;
-  --md-sys-color-on-error: #ffffff;
-  --md-sys-color-error-container: #ffdad6;
+  --md-sys-color-error: #BA1A1A;
+  --md-sys-color-on-error: #FFFFFF;
+  --md-sys-color-error-container: #FFDAD6;
   --md-sys-color-on-error-container: #410002;
 
-  --md-sys-color-background: #fffbf8;
-  --md-sys-color-on-background: #201a18;
-  --md-sys-color-surface: #fffbf8;
-  --md-sys-color-on-surface: #201a18;
-  --md-sys-color-surface-variant: #f5eadd;
-  --md-sys-color-on-surface-variant: #53433c;
+  --md-sys-color-background: #FDFCFB;
+  --md-sys-color-on-background: #1A1A1A;
+  --md-sys-color-surface: #FDFCFB;
+  --md-sys-color-on-surface: #1A1A1A;
+  --md-sys-color-surface-variant: #F4EFEA;
+  --md-sys-color-on-surface-variant: #4A4A4A;
 
-  --md-sys-color-outline: #85736b;
-  --md-sys-color-outline-variant: #d8c2bb;
+  --md-sys-color-outline: #D4CDCA;
+  --md-sys-color-outline-variant: #E8E3DF;
   --md-sys-color-shadow: #000000;
   --md-sys-color-scrim: #000000;
 
-  --radius: 0.625rem;
+  --radius: 0.375rem;
 
   /* shadcn/ui generic light theme mapping using OKLCH */
-  --background: oklch(0.99 0.01 60); /* Very light warm */
-  --foreground: oklch(0.15 0.02 50); /* Dark brown/gray */
+  --background: oklch(0.99 0.005 80); /* FDFCFB - Clean warm white */
+  --foreground: oklch(0.15 0.005 80); /* 1A1A1A - Sharp dark gray */
 
-  --card: oklch(0.99 0.01 60);
-  --card-foreground: oklch(0.15 0.02 50);
+  --card: oklch(1 0 0); /* Pure white for contrast */
+  --card-foreground: oklch(0.15 0.005 80);
 
-  --popover: oklch(0.99 0.01 60);
-  --popover-foreground: oklch(0.15 0.02 50);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.005 80);
 
-  --primary: oklch(0.65 0.18 50); /* Vivid Orange */
+  --primary: oklch(0.2 0.01 50); /* Dark charcoal/black */
   --primary-foreground: oklch(0.98 0 0); /* White */
 
-  --secondary: oklch(0.75 0.15 80); /* Warm Amber */
-  --secondary-foreground: oklch(0.2 0.05 50);
+  --secondary: oklch(0.95 0.01 80); /* Soft beige */
+  --secondary-foreground: oklch(0.2 0.01 50);
 
-  --muted: oklch(0.95 0.02 60);
-  --muted-foreground: oklch(0.55 0.05 50);
+  --muted: oklch(0.96 0.005 80);
+  --muted-foreground: oklch(0.45 0.01 80);
 
-  --accent: oklch(0.92 0.04 60);
-  --accent-foreground: oklch(0.2 0.05 50);
+  --accent: oklch(0.95 0.01 80);
+  --accent-foreground: oklch(0.2 0.01 50);
 
   --destructive: oklch(0.6 0.2 25);
   --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(0.9 0.02 60);
-  --input: oklch(0.9 0.02 60);
-  --ring: oklch(0.65 0.18 50);
+  --border: oklch(0.92 0.01 80);
+  --input: oklch(0.92 0.01 80);
+  --ring: oklch(0.8 0.01 80);
 }
 
 @theme inline {
@@ -96,59 +96,59 @@
 
 .dark {
   /* Material 3 Design Tokens - Dark Theme */
-  --md-sys-color-primary: #ffb599;
-  --md-sys-color-on-primary: #592500;
-  --md-sys-color-primary-container: #7d3500;
-  --md-sys-color-on-primary-container: #ffdbcb;
+  --md-sys-color-primary: #D4C8B8;
+  --md-sys-color-on-primary: #222222;
+  --md-sys-color-primary-container: #4A4A4A;
+  --md-sys-color-on-primary-container: #E5DED5;
 
-  --md-sys-color-secondary: #e6c18d;
-  --md-sys-color-on-secondary: #402d04;
-  --md-sys-color-secondary-container: #594319;
-  --md-sys-color-on-secondary-container: #ffdfa9;
+  --md-sys-color-secondary: #8A837A;
+  --md-sys-color-on-secondary: #FFFFFF;
+  --md-sys-color-secondary-container: #333333;
+  --md-sys-color-on-secondary-container: #E5DED5;
 
-  --md-sys-color-tertiary: #ffb4a9;
-  --md-sys-color-on-tertiary: #690002;
-  --md-sys-color-tertiary-container: #930006;
-  --md-sys-color-on-tertiary-container: #ffdad5;
+  --md-sys-color-tertiary: #A69B8D;
+  --md-sys-color-on-tertiary: #222222;
+  --md-sys-color-tertiary-container: #444444;
+  --md-sys-color-on-tertiary-container: #F4EFEA;
 
-  --md-sys-color-background: #201a18;
-  --md-sys-color-on-background: #ede0db;
-  --md-sys-color-surface: #201a18;
-  --md-sys-color-on-surface: #ede0db;
-  --md-sys-color-surface-variant: #53433c;
-  --md-sys-color-on-surface-variant: #d8c2bb;
+  --md-sys-color-background: #111111;
+  --md-sys-color-on-background: #E8E3DF;
+  --md-sys-color-surface: #111111;
+  --md-sys-color-on-surface: #E8E3DF;
+  --md-sys-color-surface-variant: #2A2A2A;
+  --md-sys-color-on-surface-variant: #D4CDCA;
 
-  --md-sys-color-outline: #a08c85;
-  --md-sys-color-outline-variant: #53433c;
+  --md-sys-color-outline: #555555;
+  --md-sys-color-outline-variant: #3A3A3A;
 
   /* shadcn/ui dark theme mapping */
-  --background: oklch(0.18 0.01 50); /* Very dark warm gray */
-  --foreground: oklch(0.95 0.02 50); /* Light warm gray/white */
+  --background: oklch(0.15 0.005 80); /* 1A1A1A */
+  --foreground: oklch(0.96 0.005 80); /* FDFCFB */
 
-  --card: oklch(0.2 0.01 50);
-  --card-foreground: oklch(0.95 0.02 50);
+  --card: oklch(0.18 0.005 80); /* Slightly lighter than bg */
+  --card-foreground: oklch(0.96 0.005 80);
 
-  --popover: oklch(0.2 0.01 50);
-  --popover-foreground: oklch(0.95 0.02 50);
+  --popover: oklch(0.18 0.005 80);
+  --popover-foreground: oklch(0.96 0.005 80);
 
-  --primary: oklch(0.7 0.15 50); /* Darker Vivid Orange */
-  --primary-foreground: oklch(0.2 0.05 50);
+  --primary: oklch(0.96 0.005 80); /* Off white */
+  --primary-foreground: oklch(0.15 0.005 80); /* Dark gray */
 
-  --secondary: oklch(0.3 0.05 50); /* Dark amber */
-  --secondary-foreground: oklch(0.9 0.05 60);
+  --secondary: oklch(0.25 0.005 80);
+  --secondary-foreground: oklch(0.96 0.005 80);
 
-  --muted: oklch(0.25 0.02 50);
-  --muted-foreground: oklch(0.7 0.05 50);
+  --muted: oklch(0.22 0.005 80);
+  --muted-foreground: oklch(0.7 0.005 80);
 
-  --accent: oklch(0.25 0.05 50);
-  --accent-foreground: oklch(0.95 0.02 50);
+  --accent: oklch(0.25 0.005 80);
+  --accent-foreground: oklch(0.96 0.005 80);
 
   --destructive: oklch(0.4 0.15 25);
-  --destructive-foreground: oklch(0.95 0.02 25);
+  --destructive-foreground: oklch(0.96 0.005 80);
 
-  --border: oklch(0.25 0.02 50);
-  --input: oklch(0.25 0.02 50);
-  --ring: oklch(0.7 0.15 50);
+  --border: oklch(0.25 0.005 80);
+  --input: oklch(0.25 0.005 80);
+  --ring: oklch(0.8 0.005 80);
 }
 
 @layer base {

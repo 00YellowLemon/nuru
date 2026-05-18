@@ -26,11 +26,11 @@ export default function Home() {
       <section className="relative py-16 md:py-24 bg-surface">
         {/* Content */}
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-left md:text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold md:font-extrabold tracking-tight text-primary mb-6 md:mb-6">
-            AI Agents Bringing <span className="text-foreground">Efficiency</span> to <span className="text-foreground">Kenyan SMEs</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground mb-6 text-balance">
+            AI Agents Bringing <span className="text-muted-foreground">Efficiency</span> to Kenyan SMEs
           </h1>
 
-          <p className="text-lg md:text-base lg:text-lg text-muted-foreground max-w-2xl md:mx-auto mb-12 md:mb-10 leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl md:mx-auto mb-10 leading-relaxed text-balance">
             We design and build custom AI agents that streamline workflows,
             eliminate repetitive tasks, and unlock measurable growth. From customer service to intelligent sourcing, we empower your business to work smarter.
           </p>
