@@ -27,17 +27,17 @@ export default function Home() {
         {/* Content */}
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-left md:text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground mb-6 text-balance">
-            AI Agents Bringing <span className="text-muted-foreground">Efficiency</span> to Kenyan SMEs
+            <span className="text-muted-foreground">AI-as-a-Service</span> Platform for Kenyan SMEs
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl md:mx-auto mb-10 leading-relaxed text-balance">
-            We design and build custom AI agents that streamline workflows,
-            eliminate repetitive tasks, and unlock measurable growth. From customer service to intelligent sourcing, we empower your business to work smarter.
+            Launch ready-to-use AI agents for customer support, sourcing, and operations.
+            Connect your tools, go live in days, and scale with a reliable subscription platform built for growth.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button asChild size="lg" className="rounded-lg w-full sm:w-auto">
-              <Link href="/contact">Start a Project</Link>
+              <Link href="/contact">Request a Demo</Link>
             </Button>
           </div>
         </div>

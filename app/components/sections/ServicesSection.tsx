@@ -7,7 +7,7 @@ export function ServicesSection() {
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-10 text-left md:text-center text-foreground">Our Services</h2>
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-10 text-left md:text-center text-foreground">AI Agent Modules</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service) => (
             <Card key={service.id}>
