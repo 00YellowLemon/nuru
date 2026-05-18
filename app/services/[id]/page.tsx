@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { services } from '../../lib/data/services';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -6,6 +7,46 @@ import Link from 'next/link';
 
 interface PageProps {
   params: Promise<{ id: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  const service = services.find(s => s.id === id);
+
+  if (!service) {
+    return {
+      title: "Service Not Found",
+      description: "The requested Nuru Works service could not be found.",
+    };
+  }
+
+  return {
+    title: service.name,
+    description: service.shortDescription,
+    alternates: {
+      canonical: `/services/${id}`,
+    },
+    openGraph: {
+      title: `${service.name} | Nuru Works`,
+      description: service.shortDescription,
+      url: `https://nuruworks.com/services/${id}`,
+      type: "website",
+      images: [
+        {
+          url: "/images/hero-ai-tech.jpg",
+          width: 1200,
+          height: 630,
+          alt: `${service.name} - Nuru Works`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${service.name} | Nuru Works`,
+      description: service.shortDescription,
+      images: ["/images/hero-ai-tech.jpg"],
+    },
+  };
 }
 
 export default async function ServiceDetailPage({ params }: PageProps) {

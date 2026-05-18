@@ -1,4 +1,18 @@
+import type { Metadata } from 'next';
 import { ServicesSection } from '../components/sections/ServicesSection';
+
+export const metadata: Metadata = {
+  title: "AI Automation & Custom Agent Services",
+  description: "Discover Nuru Works' suite of custom AI services tailored for Kenyan SMEs. Explore our customer service agents, sourcing & inventory solutions, and automated order management.",
+  alternates: {
+    canonical: "/services",
+  },
+  openGraph: {
+    title: "AI Automation & Custom Agent Services | Nuru Works",
+    description: "Discover Nuru Works' suite of custom AI services tailored for Kenyan SMEs. Explore our customer service agents, sourcing & inventory solutions, and automated order management.",
+    url: "https://nuruworks.com/services",
+  },
+};
 
 export default function ServicesPage() {
   return (

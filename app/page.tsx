@@ -3,9 +3,25 @@ import { ProcessSection } from './components/sections/ProcessSection';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Nuru Works",
+  "url": "https://nuruworks.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://nuruworks.com/services?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
       {/* Hero Section */}
       <section className="relative py-16 md:py-24 bg-surface">
         {/* Content */}

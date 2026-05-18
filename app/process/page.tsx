@@ -1,7 +1,21 @@
+import type { Metadata } from 'next';
 import { processSteps } from '../lib/data/process';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: "How We Integrate AI | Our Workflow",
+  description: "Learn about the Nuru Works proven workflow: from initial discovery to tailored design, development, testing, deployment, and long-term maintenance of AI agents.",
+  alternates: {
+    canonical: "/process",
+  },
+  openGraph: {
+    title: "How We Integrate AI | Our Workflow | Nuru Works",
+    description: "Learn about the Nuru Works proven workflow: from initial discovery to tailored design, development, testing, deployment, and long-term maintenance of AI agents.",
+    url: "https://nuruworks.com/process",
+  },
+};
 
 export default function ProcessPage() {
   return (
